@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrati</title>
+    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
+
     <div id="login-container">
         <h1>Registrati</h1>
         <form id="login-form">
@@ -28,7 +31,7 @@
 
         try {
             // Sostituisci l'URL con quello reale del tuo server
-            const response = await fetch('URL_DEL_TUO_SERVER/registrati', {
+            const response = await fetch('10.0.196.5:5000/registrati', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })

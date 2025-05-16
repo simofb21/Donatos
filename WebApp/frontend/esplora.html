@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esplora - Donatos</title>
+    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
+    <link rel="stylesheet" href="css/styleHome.css">
+</head>
+<body>
+    <img src="img/logo.jpg" alt="Logo" class="logo">
+    <div class="username">
+        <p id="welcome-user">Benvenuto <span id="utente-nome"></span></p>
+    </div>
+    <div id="ricercaUtente" style="text-align:center; margin-bottom:2rem;">
+        <input type="text" id="searchUser" placeholder="Cerca per username..." style="padding:0.5rem; border-radius:8px; border:none; width:200px;">
+        <button id="searchBtn" style="padding:0.5rem 1rem; border-radius:8px; border:none; background:#ffb300; color:#0a1a4f; font-weight:bold; cursor:pointer;">Cerca</button>
+        <button id="resetBtn" style="padding:0.5rem 1rem; border-radius:8px; border:none; background:#bdbdbd; color:#0a1a4f; font-weight:bold; cursor:pointer;">Tutti</button>
+    </div>
+    <div id="frasi">
+        <!-- Frasi di tutti gli utenti -->
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+        <a href="homePage.html" class="explore-link">Torna alla Home</a>
+    </div>
+    <script>
+    // Mostra il nome utente se disponibile
+    document.getElementById('utente-nome').textContent = localStorage.getItem('username') || "utente";
+
+    async function caricaFrasi(username = "") {
+        let url = 'http://10.0.196.5:5000/frasi';
+        if(username) url += '?username=' + encodeURIComponent(username);
+        try {
+            const res = await fetch(url);
+            const frasi = await res.json();
+            const frasiDiv = document.getElementById('frasi');
+            frasiDiv.innerHTML = '';
+            if(frasi.length === 0) {
+                frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
+            }
+            frasi.forEach(f => {
+                const fraseDiv = document.createElement('div');
+                fraseDiv.className = 'frase';
+                fraseDiv.innerHTML = `
+                    <p class="data">${f.data} - <b>${f.username}</b></p>
+                    <p class="paragrafo">${f.testo}</p>
+                `;
+                frasiDiv.appendChild(fraseDiv);
+            });
+        } catch (err) {
+            alert('Errore nel caricamento delle frasi');
+        }
+    }
+
+    document.getElementById('searchBtn').onclick = function() {
+        const username = document.getElementById('searchUser').value.trim();
+        caricaFrasi(username);
+    };
+    document.getElementById('resetBtn').onclick = function() {
+        document.getElementById('searchUser').value = '';
+        caricaFrasi();
+    };
+
+    // Carica tutte le frasi all'avvio
+    caricaFrasi();
+    </script>
+</body>
+</html>
