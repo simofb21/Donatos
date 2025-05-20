@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    PROVARE AD USARE AJAX
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donatos</title>
-    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
-    <link rel="stylesheet" href="css/styleHome.css">
+    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
+    <link rel="stylesheet" href="../css/styleHome.css">
 </head>
 <body>
-    <img src="img/logo.jpg" alt="Logo" class="logo">
+    <script>
+    if (!localStorage.getItem('username')) {
+        window.location.href = 'index.html';
+    }
+    </script>
+    <img src="../img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
-        <p id="welcome-user">Benvenuto + utente</p>
+        <p id="welcome-user"></p>
     </div>
     <div id="aggiungiFrase">
         <button id="aggiungiFraseBtn" type="button">Aggiungi Frase</button>
@@ -22,28 +28,37 @@
         <a href="esplora.html" class="explore-link">Vai alla pagina Esplora</a>
     </div>
     <script>
-    // Sostituisci con il vero username se disponibile
-    document.getElementById('welcome-user').textContent = "Benvenuto " + (localStorage.getItem('username') || "utente");
+    // Ottieni username loggato 
+    const username = localStorage.getItem('username') || "utente";
+    document.getElementById('welcome-user').textContent = "Benvenuto " + username;
 
-    // Funzione per caricare le frasi dal server
+    // Carica solo le frasi dell'utente corrente
     async function caricaFrasi() {
         try {
             const res = await fetch('http://10.0.196.5:5000/frasi');
             const frasi = await res.json();
             const frasiDiv = document.getElementById('frasi');
             frasiDiv.innerHTML = '';
-            frasi.forEach(f => {
+            // Filtra solo le frasi dell'utente corr    ente
+            frasi.filter(f => f.username === username).forEach(f => {
                 const fraseDiv = document.createElement('div');
                 fraseDiv.className = 'frase';
-                fraseDiv.setAttribute('data-id', f.id);
                 fraseDiv.innerHTML = `
-                    <p class="data">${f.data}</p>
-                    <p class="paragrafo">${f.testo}</p>
+                    <p class="data">${f.dataora}</p>
+                    <p class="paragrafo">${f.frase}</p>
                     <button class="cancella-btn" title="Cancella frase">&times;</button>
                 `;
                 fraseDiv.querySelector('.cancella-btn').onclick = async function() {
                     if(confirm('Vuoi davvero cancellare questa frase?')) {
-                        await fetch('http://10.0.196.5:5000/frasi/' + f.id, { method: 'DELETE' });
+                        await fetch('http://10.0.196.5:5000/cancella_frase', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                username: f.username,
+                                dataora: f.dataora,
+                                frase: f.frase
+                            })
+                        });
                         caricaFrasi();
                     }
                 };
@@ -58,10 +73,10 @@
     document.getElementById('aggiungiFraseBtn').onclick = async function() {
         const testo = prompt('Inserisci la nuova frase:');
         if(testo && testo.trim().length > 0) {
-            await fetch('http://10.0.196.5:5000/frasi', {
+            await fetch('http://10.0.196.5:5000/aggiungi_frase', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ testo })
+                body: JSON.stringify({ username: username, frase: testo })
             });
             caricaFrasi();
         }

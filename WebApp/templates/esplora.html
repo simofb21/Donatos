@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esplora - Donatos</title>
-    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
-    <link rel="stylesheet" href="css/styleHome.css">
+    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
+    <link rel="stylesheet" href="../css/styleHome.css"> 
 </head>
 <body>
-    <img src="img/logo.jpg" alt="Logo" class="logo">
+    <script>
+    if (!localStorage.getItem('username')) {
+        window.location.href = 'index.html';
+    }
+    </script>
+    <img src="../img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user">Benvenuto <span id="utente-nome"></span></p>
     </div>
@@ -27,38 +32,48 @@
     // Mostra il nome utente se disponibile
     document.getElementById('utente-nome').textContent = localStorage.getItem('username') || "utente";
 
-    async function caricaFrasi(username = "") {
-        let url = 'http://10.0.196.5:5000/frasi';
-        if(username) url += '?username=' + encodeURIComponent(username);
+    let tutteLeFrasi = [];
+
+    async function caricaFrasi() {
         try {
-            const res = await fetch(url);
-            const frasi = await res.json();
-            const frasiDiv = document.getElementById('frasi');
-            frasiDiv.innerHTML = '';
-            if(frasi.length === 0) {
-                frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
-            }
-            frasi.forEach(f => {
-                const fraseDiv = document.createElement('div');
-                fraseDiv.className = 'frase';
-                fraseDiv.innerHTML = `
-                    <p class="data">${f.data} - <b>${f.username}</b></p>
-                    <p class="paragrafo">${f.testo}</p>
-                `;
-                frasiDiv.appendChild(fraseDiv);
-            });
+            const res = await fetch('http://10.0.196.5:5000/frasi');
+            tutteLeFrasi = await res.json();
+            mostraFrasi(tutteLeFrasi);
         } catch (err) {
             alert('Errore nel caricamento delle frasi');
         }
     }
 
+    function mostraFrasi(frasi) {
+        const frasiDiv = document.getElementById('frasi');
+        frasiDiv.innerHTML = '';
+        if(frasi.length === 0) {
+            frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
+        }
+        frasi.forEach(f => {
+            const fraseDiv = document.createElement('div');
+            fraseDiv.className = 'frase';
+            fraseDiv.innerHTML = `
+                <p class="data">${f.dataora} - <b>${f.username}</b></p>
+                <p class="paragrafo">${f.frase}</p>
+            `;
+            frasiDiv.appendChild(fraseDiv);
+        });
+    }
+
     document.getElementById('searchBtn').onclick = function() {
         const username = document.getElementById('searchUser').value.trim();
-        caricaFrasi(username);
+        if(username) {
+            const filtrate = tutteLeFrasi.filter(f => f.username.toLowerCase() === username.toLowerCase());
+            mostraFrasi(filtrate);
+        } else {
+            mostraFrasi(tutteLeFrasi);
+        }
     };
+
     document.getElementById('resetBtn').onclick = function() {
         document.getElementById('searchUser').value = '';
-        caricaFrasi();
+        mostraFrasi(tutteLeFrasi);
     };
 
     // Carica tutte le frasi all'avvio

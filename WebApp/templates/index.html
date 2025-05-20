@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
 
 </head>
 <body>
 
-    <div id="login-container">
+    <div id="login-container"> <!-- dove metto la pagina nomrmale per il login -->
         <h1>Login</h1>
         <form id="login-form">
             <input type="text" id="username" placeholder="Username" required>
@@ -22,7 +22,8 @@
             <button id="forgot-btn" type="button">Password dimenticata?</button>    
         </div>
     </div>
-    <div id="welcome-container" style="display:none;">
+    <!-- lo lascio ma proba ilmente non sarà giusto-->
+    <div id="welcome-container" style="display:none;"> <!-- dove metto la pagina di benvenuto una volta effettuato il login, inizialmente nascosta-->
         <h2 id="welcome-msg"></h2>
         <button id="home-btn">Home</button>
         <button id="explore-btn">Esplora</button>
@@ -34,37 +35,29 @@
         const password = document.getElementById('password').value;
 
         try {
-            // Sostituisci l'URL con quello reale del tuo server
-            const response = await fetch('10.0.96.195:5000/login', {
+            const response = await fetch('http://10.0.196.5:5000/login', { //faccio la post al server
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
             });
-
-            if (response.ok) {
-                document.getElementById('login-container').style.display = 'none';
-                document.getElementById('welcome-container').style.display = 'block';
-                document.getElementById('welcome-msg').textContent = `Benvenuto, ${username}!`;
+            const data = await response.json();
+            if (response.ok && data.success) {
+                localStorage.setItem('username', username); // mi salvo l'username in locale, in questo modo riesco ad accedere a esplora e reigstrati
+                window.location.href = 'homePage.html';
             } else {
-                alert('Username o password errati.');
+                alert(data.message || 'Username o password errati.');
             }
         } catch (error) {
             alert('Errore di connessione al server.');
         }
     });
 
-    document.getElementById('forgot-btn').onclick = function() {
-        alert("Prossima volta ricordatela, ti suggeriamo di registrarti con un nuovo username");
-    };
-
-    document.getElementById('register-btn').onclick = function() {
+    document.getElementById('register-btn').onclick = function() { //se clicca su registrati rimadno alla pagina di registrazione
         window.location.href = 'registrati.html';
     };
-    document.getElementById('home-btn').onclick = function() {
-        window.location.href = 'homePage.html';
-    };
-    document.getElementById('explore-btn').onclick = function() {
-        window.location.href = 'esplora.html';
+
+    document.getElementById('forgot-btn').onclick = function() { //se clicca password dimetnicata
+        alert("Prossima volta ricordatela, ti suggeriamo di registrarti con un nuovo username");
     };
     </script>
 </body>

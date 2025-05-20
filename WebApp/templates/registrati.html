@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrati</title>
-    <link rel="icon" type="image/x-icon" href="img/icona.jpg">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     
@@ -24,30 +24,32 @@
         <button id="explore-btn">Esplora</button>
     </div>
     <script>
-    document.getElementById('login-form').addEventListener('submit', async function(e) {
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
 
         try {
-            // Sostituisci l'URL con quello reale del tuo server
-            const response = await fetch('10.0.196.5:5000/registrati', {
+            const response = await fetch('http://10.0.196.5:5000/registrati', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                body: JSON.stringify({ username, password })
             });
-
-            if (response.ok) {
+            const data = await response.json();
+            if (response.ok && data.success) {
                 alert('Registrazione avvenuta! Ora puoi fare il login.');
                 window.location.href = 'index.html';
             } else {
-                const data = await response.json();
                 alert(data.message || 'Errore nella registrazione.');
             }
         } catch (error) {
             alert('Errore di connessione al server.');
         }
     });
+
+    document.getElementById('login-btn').onclick = function() {
+        window.location.href = 'index.html';
+    };
     </script>
 </body>
 </html>
