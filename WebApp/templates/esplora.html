@@ -29,37 +29,41 @@
         <a href="homePage.html" class="explore-link">Torna alla Home</a>
     </div>
     <script>
-    // Mostra il nome utente se disponibile
     document.getElementById('utente-nome').textContent = localStorage.getItem('username') || "utente";
 
     let tutteLeFrasi = [];
 
-    async function caricaFrasi() {
-        try {
-            const res = await fetch('http://10.0.196.5:5000/frasi');
-            tutteLeFrasi = await res.json();
-            mostraFrasi(tutteLeFrasi);
-        } catch (err) {
-            alert('Errore nel caricamento delle frasi');
-        }
+    async function leggiFrasi() {
+        fetch('../frasi.json')
+            .then(response => response.json())
+            .then(data => {
+                tutteLeFrasi = data;
+                mostraFrasi(tutteLeFrasi);
+            })
+            .catch(error => console.error('Errore nel caricamento delle frasi:', error));
     }
 
     function mostraFrasi(frasi) {
-        const frasiDiv = document.getElementById('frasi');
-        frasiDiv.innerHTML = '';
-        if(frasi.length === 0) {
-            frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
+    const frasiDiv = document.getElementById('frasi');
+    frasiDiv.innerHTML = '';
+    if(frasi.length === 0) {
+        frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
+    } else {
+        for(const frase of frasi){
+            const fraseBox = document.createElement('div');
+            const pFrase = document.createElement('p');
+            pFrase.textContent = frase.frase;
+            const pAutore = document.createElement('p');
+            pAutore.textContent = 'Autore: ' + frase.username;
+            const pData = document.createElement('p');
+            pData.textContent = 'Data: ' + frase.dataora;
+            fraseBox.appendChild(pFrase);
+            fraseBox.appendChild(pAutore);
+            fraseBox.appendChild(pData);
+            frasiDiv.appendChild(fraseBox);
         }
-        frasi.forEach(f => {
-            const fraseDiv = document.createElement('div');
-            fraseDiv.className = 'frase';
-            fraseDiv.innerHTML = `
-                <p class="data">${f.dataora} - <b>${f.username}</b></p>
-                <p class="paragrafo">${f.frase}</p>
-            `;
-            frasiDiv.appendChild(fraseDiv);
-        });
     }
+}
 
     document.getElementById('searchBtn').onclick = function() {
         const username = document.getElementById('searchUser').value.trim();
@@ -67,7 +71,7 @@
             const filtrate = tutteLeFrasi.filter(f => f.username.toLowerCase() === username.toLowerCase());
             mostraFrasi(filtrate);
         } else {
-            mostraFrasi(tutteLeFrasi);
+            mostraFrasi(tutteLeFrasi); 
         }
     };
 
@@ -76,8 +80,8 @@
         mostraFrasi(tutteLeFrasi);
     };
 
-    // Carica tutte le frasi all'avvio
-    caricaFrasi();
+    leggiFrasi();
+    mostraFrasi(tutteLeFrasi);
     </script>
 </body>
 </html>
