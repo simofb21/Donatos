@@ -22,50 +22,51 @@
         <button id="aggiungiFraseBtn" type="button">Aggiungi Frase</button>
     </div>
     <div id="frasi">
-        <!-- Le frasi saranno caricate dinamicamente -->
+        <!-- caricheranno dinamicamente  le frasi -->   
     </div>
     <div style="text-align:center; margin-top:2rem;">
         <a href="esplora.html" class="explore-link">Vai alla pagina Esplora</a>
     </div>
     <script>
-    // Ottieni username loggato 
-    const username = localStorage.getItem('username') || "utente";
+    // ottengo username loggato 
+    const username = localStorage.getItem('username');
     document.getElementById('welcome-user').textContent = "Benvenuto " + username;
+    let frasiUtente = [];
 
-    // Carica solo le frasi dell'utente corrente
-    async function caricaFrasi() {
-        try {
-            const res = await fetch('http://10.0.196.5:5000/frasi');
-            const frasi = await res.json();
-            const frasiDiv = document.getElementById('frasi');
-            frasiDiv.innerHTML = '';
-            // Filtra solo le frasi dell'utente corr    ente
-            frasi.filter(f => f.username === username).forEach(f => {
-                const fraseDiv = document.createElement('div');
-                fraseDiv.className = 'frase';
-                fraseDiv.innerHTML = `
-                    <p class="data">${f.dataora}</p>
-                    <p class="paragrafo">${f.frase}</p>
-                    <button class="cancella-btn" title="Cancella frase">&times;</button>
-                `;
-                fraseDiv.querySelector('.cancella-btn').onclick = async function() {
-                    if(confirm('Vuoi davvero cancellare questa frase?')) {
-                        await fetch('http://10.0.196.5:5000/cancella_frase', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                username: f.username,
-                                dataora: f.dataora,
-                                frase: f.frase
-                            })
-                        });
-                        caricaFrasi();
-                    }
-                };
-                frasiDiv.appendChild(fraseDiv);
-            });
-        } catch (err) {
-            alert('Errore nel caricamento delle frasi');
+    async function filtraFrasi() {
+    try {
+        const res = await fetch('frasi.json');
+        if (!res.ok) throw new Error('File non trovato o errore di rete');
+        const frasi = await res.json();
+        frasiUtente = []; // svuota l'array prima di riempirlo
+        for (const frase of frasi) {
+            if (frase.username === username) {
+                frasiUtente.push(frase);
+            }
+        }
+        frasiUtente.slice().reverse(); // inverte l'array per mostrare le frasi più recenti per prime
+    } catch (error) {
+        console.error('Errore nell\'apertura o lettura del file:', error);
+    }
+}
+    async function  caricaFrasi(){
+        filtraFrasi();
+        const frasiDiv = document.getElementById('frasi');
+        frasiDiv.innerHTML = '';
+        if (frasiUtente.length === 0) {
+            frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
+        }
+        else{
+            for(const frase of frasiUtente){
+                const fraseBox = document.createElement('div');
+                const pFrase = document.createElement('p');
+                pFrase.textContent = frase.frase;
+                const pData = document.createElement('p');
+                pData.textContent = 'Data: ' + frase.dataora;
+                fraseBox.appendChild(pFrase);
+                fraseBox.appendChild(pData);
+                frasiDiv.appendChild(fraseBox);
+            }   
         }
     }
 
