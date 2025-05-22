@@ -129,5 +129,17 @@ def cancella_frase():
 
     return jsonify({'success': True, 'message': 'Frase cancellata'}), 200
 
+
+
+@app.route('/frasi', methods=['GET'])
+def frasi():
+    if os.path.exists('frasi.json'):
+        with open('frasi.json', 'r', encoding='utf-8') as f:
+            frasi = json.load(f)
+    else:
+        frasi = []
+
+    return jsonify(frasi), 200
+
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5000, debug=True)
