@@ -10,6 +10,10 @@ def home():
     return render_template('index.html')
 
 # gestione della registrazione
+@app.route('/registrati', methods=['GET'])
+def registrati_page():
+    return render_template('registrati.html')
+
 @app.route('/registrati', methods=['POST'])
 def registrati():
     data = request.get_json()
@@ -38,6 +42,10 @@ def registrati():
     return jsonify({'success': True, 'message': 'Registrazione avvenuta'}), 201
 
 #  gestione del login
+@app.route('/login', methods=['GET'])
+def login_page():
+    return render_template('index.html')
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -113,5 +121,14 @@ def cancella_frase():
 
     return jsonify({'success': True, 'message': 'Frase cancellata'}), 200
 
+@app.route('/frasi', methods=['GET'])
+def frasi():
+    if os.path.exists('frasi.json'):
+        with open('frasi.json', 'r', encoding='utf-8') as f:
+            frasi = json.load(f)
+    else:
+        frasi = []
+    return jsonify(frasi), 200
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

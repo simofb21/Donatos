@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donatos</title>
-    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
-    <link rel="stylesheet" href="../css/styleHome.css">
+    <link rel="icon" type="image/x-icon" href="../static/img/icona.jpg">
+    <link rel="stylesheet" href="../static/css/styleHome.css">
 </head>
 <body>
     <script>
@@ -14,7 +14,7 @@
         window.location.href = 'index.html';
     }
     </script>
-    <img src="../img/logo.jpg" alt="Logo" class="logo">
+    <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user"></p>
     </div>
@@ -35,7 +35,7 @@
 
     async function filtraFrasi() {
     try {
-        const res = await fetch('frasi.json');
+        const res = await fetch('http://10.0.196.5:5000/frasi');
         if (!res.ok) throw new Error('File non trovato o errore di rete');
         const frasi = await res.json();
         frasiUtente = []; // svuota l'array prima di riempirlo
@@ -44,7 +44,7 @@
                 frasiUtente.push(frase);
             }
         }
-        frasiUtente.slice().reverse(); // inverte l'array per mostrare le frasi più recenti per prime
+        frasiUtente = frasiUtente.slice().reverse(); // inverte l'array per mostrare le frasi più recenti per prime
     } catch (error) {
         console.error('Errore nell\'apertura o lettura del file:', error);
     }
@@ -84,7 +84,7 @@
     };
 
     // Carica le frasi all'avvio
-    caricaFrasi();
+    caricaFrasi(); 
     </script>
 </body>
 </html>

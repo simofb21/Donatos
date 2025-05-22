@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrati</title>
-    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="..static/img/icona.jpg">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     
@@ -24,10 +24,9 @@
         <button id="explore-btn">Esplora</button>
     </div>
     <script>
-    document.getElementById('register-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
+    document.getElementById('login-form').addEventListener('submit', async function(e) { e.preventDefault();
         const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value;
+        const password = document.getElementById('password').value; 
 
         try {
             const response = await fetch('http://10.0.196.5:5000/registrati', {
@@ -39,7 +38,7 @@
             if (response.ok && data.success) {
                 alert('Registrazione avvenuta! Ora puoi fare il login.');
                 window.location.href = 'index.html';
-            } else {
+            } else {        
                 alert(data.message || 'Errore nella registrazione.');
             }
         } catch (error) {

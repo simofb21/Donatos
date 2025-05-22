@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esplora - Donatos</title>
-    <link rel="icon" type="image/x-icon" href="../img/icona.jpg">
-    <link rel="stylesheet" href="../css/styleHome.css"> 
+    <link rel="icon" type="image/x-icon" href="../static/img/icona.jpg">
+    <link rel="stylesheet" href="../static/css/styleHome.css"> 
 </head>
 <body>
     <script>
@@ -13,7 +13,7 @@
         window.location.href = 'index.html';
     }
     </script>
-    <img src="../img/logo.jpg" alt="Logo" class="logo">
+    <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user">Benvenuto <span id="utente-nome"></span></p>
     </div>
@@ -34,14 +34,15 @@
     let tutteLeFrasi = [];
 
     async function leggiFrasi() {
-        fetch('../frasi.json')
-            .then(response => response.json())
-            .then(data => {
-                tutteLeFrasi = data;
-                mostraFrasi(tutteLeFrasi);
-            })
-            .catch(error => console.error('Errore nel caricamento delle frasi:', error));
+    try {
+        const response = await fetch('http://10.0.196.5:5000/frasi');
+        if (!response.ok) throw new Error('Errore nella richiesta');
+        tutteLeFrasi = await response.json();
+        mostraFrasi(tutteLeFrasi);
+    } catch (error) {
+        console.error('Errore nel caricamento delle frasi:', error);
     }
+}
 
     function mostraFrasi(frasi) {
     const frasiDiv = document.getElementById('frasi');
