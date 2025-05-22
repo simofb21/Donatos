@@ -9,7 +9,7 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome 
 
 | Nome         | Competenze e attività principali            |
 |--------------|---------------------------------------------|
-| Mario Rossi  | Backend, sicurezza, autenticazione          |
+| Mario Rossi    | Backend, sicurezza, autenticazione          |
 | Luca Bianchi | Frontend, React, UX                         |
 | Anna Verdi   | Test automatici, documentazione             |
 
@@ -17,7 +17,7 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome 
 
 ## 3. Requisiti
 
-### 3.1 Requisiti Funzionali
+### 3.1 Requisiti Funzionali 
 - L’utente può registrarsi e accedere al sistema.
 - L’amministratore può gestire gli utenti.
 
@@ -26,7 +26,7 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome 
 - Compatibile con i browser moderni.
 
 ## 4. Analisi del Sistema  
-### Diagramma dei casi d’uso  
+### Diagramma dei casi d’uso     
 ![Casi d'uso](path/to/casoduso.png)
 
 ### Descrizione dei moduli principali

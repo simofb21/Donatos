@@ -10,9 +10,9 @@
 <body>
     
 
-    <div id="login-container">
+    <div id="register-container">
         <h1>Registrati</h1>
-        <form id="login-form">
+        <form id="register-form">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Registrati</button>
@@ -24,7 +24,7 @@
         <button id="explore-btn">Esplora</button>
     </div>
     <script>
-    document.getElementById('login-form').addEventListener('submit', async function(e) { e.preventDefault();
+    document.getElementById('register-form').addEventListener('submit', async function(e) { e.preventDefault();
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value; 
 
@@ -34,7 +34,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
             });
-            const data = await response.json();
+            const data = await response.json(); 
             if (response.ok && data.success) {
                 alert('Registrazione avvenuta! Ora puoi fare il login.');
                 window.location.href = 'index.html';
@@ -47,7 +47,7 @@
     });
 
     document.getElementById('login-btn').onclick = function() {
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; //qua andra messo HTTP//IP:5000/
     };
     </script>
 </body>

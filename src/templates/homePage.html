@@ -10,13 +10,15 @@
 </head>
 <body>
     <script>
-    if (!localStorage.getItem('username')) {
+    if (!localStorage.getItem('donatos_username')) {
         window.location.href = 'index.html';
     }
     </script>
     <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user"></p>
+        <button id="logout-btn" type="button">Logout</button>
+
     </div>
     <div id="aggiungiFrase">
         <button id="aggiungiFraseBtn" type="button">Aggiungi Frase</button>
@@ -29,10 +31,15 @@
     </div>
     <script>
     // ottengo username loggato 
-    const username = localStorage.getItem('username');
-    document.getElementById('welcome-user').textContent = "Benvenuto " + username;
-    let frasiUtente = [];
+    const username = localStorage.getItem('donatos_username');
 
+    document.getElementById('welcome-user').textContent = "Benvenuto " + donatos_username;
+    let frasiUtente = [];
+    // Logout
+    document.getElementById('logout-btn').onclick = function() {
+        localStorage.removeItem('donatos_username');
+        window.location.href = 'index.html';
+    };
     async function filtraFrasi() {
     try {
         const res = await fetch('http://10.0.196.5:5000/frasi');
@@ -84,7 +91,7 @@
     };
 
     // Carica le frasi all'avvio
-    caricaFrasi(); 
+    caricaFrasi();      
     </script>
 </body>
 </html>

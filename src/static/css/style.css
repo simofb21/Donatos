@@ -6,7 +6,7 @@ body {
     align-items: center;
     height:20rem;
 }
-#login-container, #welcome-container {
+#login-container, #welcome-container, #register-container {
     background: #1d0060;
     padding: 8rem;
     border-radius: 8px;
