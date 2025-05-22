@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    PROVARE AD USARE AJAX
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donatos</title>
@@ -11,7 +10,7 @@
 <body>
     <script>
     if (!localStorage.getItem('donatos_username')) {
-        window.location.href = 'index.html';
+        window.location.href = '/';
     }
     </script>
     <img src="../static/img/logo.jpg" alt="Logo" class="logo">
@@ -32,17 +31,17 @@
     <script>
     // ottengo username loggato 
     const username = localStorage.getItem('donatos_username');
-
+   // let ip = '10.0.1.1:5000';//sostitruire con ip della tua macchina
     document.getElementById('welcome-user').textContent = "Benvenuto " + donatos_username;
     let frasiUtente = [];
     // Logout
     document.getElementById('logout-btn').onclick = function() {
         localStorage.removeItem('donatos_username');
-        window.location.href = 'index.html';
+        window.location.href = '/';
     };
     async function filtraFrasi() {
     try {
-        const res = await fetch('http://10.0.196.5:5000/frasi');
+        const res = await fetch('/frasi');
         if (!res.ok) throw new Error('File non trovato o errore di rete');
         const frasi = await res.json();
         frasiUtente = []; // svuota l'array prima di riempirlo
@@ -56,22 +55,46 @@
         console.error('Errore nell\'apertura o lettura del file:', error);
     }
 }
-    async function  caricaFrasi(){
-        filtraFrasi();
+    async function caricaFrasi(){
+        await filtraFrasi();
         const frasiDiv = document.getElementById('frasi');
         frasiDiv.innerHTML = '';
         if (frasiUtente.length === 0) {
             frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
-        }
-        else{
+        } else {
             for(const frase of frasiUtente){
                 const fraseBox = document.createElement('div');
+                fraseBox.className = 'frase-box';
+
                 const pFrase = document.createElement('p');
                 pFrase.textContent = frase.frase;
+
                 const pData = document.createElement('p');
                 pData.textContent = 'Data: ' + frase.dataora;
+
+                // Bottone cancella
+                const btnCancella = document.createElement('button');
+                btnCancella.className = 'cancella-btn';
+                btnCancella.title = 'Cancella frase';
+                btnCancella.innerHTML = '&times;';
+                btnCancella.onclick = async function() {
+                    if(confirm('Vuoi davvero cancellare questa frase?')) {
+                        await fetch('/cancella_frase', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                username: frase.username,
+                                dataora: frase.dataora,
+                                frase: frase.frase
+                            })
+                        });
+                        caricaFrasi();
+                    }
+                };
+
                 fraseBox.appendChild(pFrase);
                 fraseBox.appendChild(pData);
+                fraseBox.appendChild(btnCancella);
                 frasiDiv.appendChild(fraseBox);
             }   
         }
@@ -81,7 +104,7 @@
     document.getElementById('aggiungiFraseBtn').onclick = async function() {
         const testo = prompt('Inserisci la nuova frase:');
         if(testo && testo.trim().length > 0) {
-            await fetch('http://10.0.196.5:5000/aggiungi_frase', {
+            await fetch('/aggiungi_frase', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: username, frase: testo })

@@ -29,7 +29,7 @@
         const password = document.getElementById('password').value; 
 
         try {
-            const response = await fetch('http://10.0.196.5:5000/registrati', {
+            const response = await fetch('/registrati', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
@@ -37,7 +37,7 @@
             const data = await response.json(); 
             if (response.ok && data.success) {
                 alert('Registrazione avvenuta! Ora puoi fare il login.');
-                window.location.href = 'index.html';
+                window.location.href = '/';
             } else {        
                 alert(data.message || 'Errore nella registrazione.');
             }
@@ -47,7 +47,7 @@
     });
 
     document.getElementById('login-btn').onclick = function() {
-        window.location.href = 'index.html'; //qua andra messo HTTP//IP:5000/
+        window.location.href = '/'; //qua andra messo HTTP//IP:5000/
     };
     </script>
 </body>
