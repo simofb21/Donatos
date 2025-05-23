@@ -66,9 +66,6 @@ Se ti sei registrato inserisci le tue credenziali
 
 ![image](https://github.com/user-attachments/assets/e1792ff7-46a8-4fd9-b727-022274c3cf0b)
 
-### Copertura del codice
-- 85%
-
 ## 8. Manutenzione e Sviluppo Futuro
 
 - **Bug noti**: problema di rendering su Safari  
