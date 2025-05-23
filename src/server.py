@@ -9,6 +9,18 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/register')
+def serve_register():
+    return render_template('registrati.html')
+
+@app.route('/esplora')
+def serve_explore():
+    return render_template('esplora.html') 
+
+@app.route('/homePage')
+def serve_home_page():
+    return render_template('homePage.html')
+
 #gestione della registrazione
 @app.route('/registrati', methods=['POST'])
 def registrati():
