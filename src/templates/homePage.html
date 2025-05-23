@@ -31,7 +31,6 @@
     <script>
     // ottengo username loggato 
     const username = localStorage.getItem('donatos_username');
-   // let ip = '10.0.1.1:5000';//sostitruire con ip della tua macchina
     document.getElementById('welcome-user').textContent = "Benvenuto " + username;
     let frasiUtente = [];
     // Logout
@@ -66,13 +65,14 @@
                 const fraseBox = document.createElement('div');
                 fraseBox.className = 'frase-box';
 
+                // Contenitore testo e bottone
+                const contenuto = document.createElement('div');
+                contenuto.className = 'frase-contenuto';
+
                 const pFrase = document.createElement('p');
                 pFrase.textContent = frase.frase;
 
-                const pData = document.createElement('p');
-                pData.textContent = 'Data: ' + frase.dataora;
-
-                // Bottone cancella
+                // Bottone cancella accanto alla frase
                 const btnCancella = document.createElement('button');
                 btnCancella.className = 'cancella-btn';
                 btnCancella.title = 'Cancella frase';
@@ -92,11 +92,16 @@
                     }
                 };
 
-                fraseBox.appendChild(pFrase);
+                contenuto.appendChild(pFrase);
+                contenuto.appendChild(btnCancella); // bottone accanto alla frase
+                fraseBox.appendChild(contenuto);
+
+                const pData = document.createElement('p');
+                pData.textContent = 'Data: ' + frase.dataora;
                 fraseBox.appendChild(pData);
-                fraseBox.appendChild(btnCancella);
+
                 frasiDiv.appendChild(fraseBox);
-            }   
+            }
         }
     }
 
