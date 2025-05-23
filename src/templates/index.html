@@ -43,7 +43,7 @@
             const data = await response.json();
             if (response.ok && data.success) {
                 localStorage.setItem('donatos_username', username); // mi salvo l'username in locale, in questo modo riesco ad accedere a esplora e reigstrati
-                window.location.href = 'homePage.html';
+                window.location.href = '/homePage'; //se il login va a buon fine rimando alla home
             } else {
                 alert(data.message || 'Username o password errati.');
             }
