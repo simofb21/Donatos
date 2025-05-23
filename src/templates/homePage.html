@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="../static/css/styleHome.css">
 </head>
 <body>
+    
     <script>
     if (!localStorage.getItem('donatos_username')) {
         window.location.href = '/';
     }
+    <div class="logout-area">
+    <button id="logout-btn" type="button">Logout</button>
+    </div>
     </script>
     <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user"></p>
-        <button id="logout-btn" type="button">Logout</button>
 
     </div>
     <div id="aggiungiFrase">

@@ -12,12 +12,13 @@
     if (!localStorage.getItem('donatos_username')) {
         window.location.href = '/';
     }
+    <div class="logout-area">
+    <button id="logout-btn" type="button">Logout</button>
+    </div>
     </script>
     <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user">Benvenuto <span id="utente-nome"></span></p>
-            <button id="logout-btn" type="button">Logout</button>
-
     </div>
     <div id="ricercaUtente" style="text-align:center; margin-bottom:2rem;">
         <input type="text" id="searchUser" placeholder="Cerca per username..." style="padding:0.5rem; border-radius:8px; border:none; width:200px;">
@@ -54,12 +55,19 @@
         } else {
             for(const frase of frasi){
                 const fraseBox = document.createElement('div');
+                fraseBox.className = 'frase-box';
+
                 const pFrase = document.createElement('p');
                 pFrase.textContent = frase.frase;
+
                 const pAutore = document.createElement('p');
+                pAutore.className = 'frase-info';
                 pAutore.textContent = 'Autore: ' + frase.username;
+
                 const pData = document.createElement('p');
+                pData.className = 'frase-info';
                 pData.textContent = 'Data: ' + frase.dataora;
+
                 fraseBox.appendChild(pFrase);
                 fraseBox.appendChild(pAutore);
                 fraseBox.appendChild(pData);
