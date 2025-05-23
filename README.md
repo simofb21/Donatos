@@ -2,16 +2,16 @@
 **Documentazione tecnica**
 
 ## 1. Introduzione  
-Il progetto **[Nome del progetto]** nasce con l'obiettivo di risolvere il problema di [...] mediante la creazione di un'applicazione/software/sistema che [...].
+Il progetto **Donatos** è un social network che nasce con l'obiettivo di condividere dei momenti con delle frasi.
 
 ## 2. Team di sviluppo  
-Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome corso]**:
+Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC Informatica**:
 
-| Nome         | Competenze e attività principali            |
-|--------------|---------------------------------------------|
-| Mario Rossi    | Backend, sicurezza, autenticazione          |
-| Luca Bianchi | Frontend, React, UX                         |
-| Anna Verdi   | Test automatici, documentazione             |
+| Nome                     | Competenze e attività principali   |
+|--------------------------|------------------------------------|
+| D'Elia, Fusar Bassini    | Backend                            |
+| Donato, Cornetti         | Frontend, css                      |
+| Donato, Cornetti         | documentazione                     |
 
 > 💡 Se usato Git: [Link al repository GitHub](https://github.com/utente/progetto)
 
@@ -19,7 +19,9 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome 
 
 ### 3.1 Requisiti Funzionali 
 - L’utente può registrarsi e accedere al sistema.
-- L’amministratore può gestire gli utenti.
+- Gli utenti possono scrivere delle frasi
+- Gli utenti possono vedere frasi altrui
+- Gli utenti possono fare il logout 
 
 ### 3.2 Requisiti Non Funzionali
 - Il sistema deve rispondere entro 2 secondi.
@@ -47,10 +49,10 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **[nome 
 ### Struttura delle cartelle
 ```
 /src
-  /controllers
-  /models
-  /routes
-  /views
+  /template
+  /static
+    /css
+    /img
 ```
 
 ### Funzionalità chiave
