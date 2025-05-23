@@ -13,7 +13,7 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC In
 | Donato, Cornetti         | Frontend, css                      |
 | Donato, Cornetti         | documentazione                     |
 
-> 💡 Se usato Git: [Link al repository GitHub](https://github.com/utente/progetto)
+> 💡 Se usato Git: [Link al repository GitHub](https://github.com/simofb21/Donatos.git)
 
 ## 3. Requisiti
 
@@ -24,14 +24,13 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC In
 - Gli utenti possono fare il logout 
 
 ### 3.2 Requisiti Non Funzionali
-- 
+- L'interfaccia utente è intuitiva e facile da usare.
 
 ## 4. Analisi del Sistema
 
 ### Descrizione dei moduli principali
-- **Modulo autenticazione**  
-- **Modulo gestione dati**
-
+- **Modulo autenticazione**
+  
 ## 5. Architettura del Software
 
 ### Tecnologie utilizzate
@@ -67,29 +66,23 @@ Se ti sei registrato inserisci le tue credenziali
 
 ![image](https://github.com/user-attachments/assets/e1792ff7-46a8-4fd9-b727-022274c3cf0b)
 
-## 9. Test e Validazione
-
-### Test eseguiti
-- Test unitari con Jest
-- Test di integrazione con Postman
-
 ### Copertura del codice
 - 85%
 
-## 10. Manutenzione e Sviluppo Futuro
+## 8. Manutenzione e Sviluppo Futuro
 
 - **Bug noti**: problema di rendering su Safari  
 - **Funzionalità previste**: esportazione in PDF, notifiche push
 
-## 11. Conclusioni  
+## 9. Conclusioni 
 Il progetto ha raggiunto gli obiettivi principali. Le sfide maggiori sono state [...]. È stato utile per migliorare le competenze in [...].
 
-## 12. Riferimenti e Bibliografia
+## 10. Riferimenti e Bibliografia
 
 - [Documentazione ufficiale di React](https://reactjs.org)
 - *Clean Code* di Robert C. Martin
 
-## 13. Appendici
+## 11. Appendici
 
 - Codice sorgente: vedi cartella `/src`
 - Glossario dei termini tecnici
