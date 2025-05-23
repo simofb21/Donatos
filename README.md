@@ -24,12 +24,9 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC In
 - Gli utenti possono fare il logout 
 
 ### 3.2 Requisiti Non Funzionali
-- Il sistema deve rispondere entro 2 secondi.
-- Compatibile con i browser moderni.
+- 
 
-## 4. Analisi del Sistema  
-### Diagramma dei casi d’uso     
-![Casi d'uso](path/to/casoduso.png)
+## 4. Analisi del Sistema
 
 ### Descrizione dei moduli principali
 - **Modulo autenticazione**  
@@ -40,9 +37,6 @@ Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC In
 ### Tecnologie utilizzate
 - **Frontend**:   html,css,js
 - **Backend**: python (flask)
-
-### Pattern architetturali
-- MVC (Model-View-Controller)
 
 ## 6. Implementazione
 
@@ -61,34 +55,17 @@ loginUser(email, password)
 createReport(data)
 ```
 
-## 7. Installazione e Configurazione
-
-1. Clonare il repository:  
-   ```bash
-   git clone https://github.com/utente/progetto.git
-   ```
-
-2. Installare le dipendenze:  
-   ```bash
-   npm install
-   ```
-
-3. Creare il file `.env` con le variabili richieste.
-
-4. Avviare il server:  
-   ```bash
-   npm start
-   ```
-
-## 8. Manuale Utente
+## 7. Manuale Utente
 
 ### Registrazione  
-Cliccare su "Sign up", compilare i campi...
+Se non sei registrato clicca su "Registrati", compilare i campi username e password
 
-### Inserimento dati  
-Accedere alla sezione "Nuovo record", compilare il modulo...
+![image](https://github.com/user-attachments/assets/7ab5f83c-3a3f-4c30-84fe-a3123c9e2887)
 
-![Screenshot interfaccia](path/to/interfaccia.png)
+### Login  
+Se ti sei registrato inserisci le tue credenziali
+
+![image](https://github.com/user-attachments/assets/e1792ff7-46a8-4fd9-b727-022274c3cf0b)
 
 ## 9. Test e Validazione
 
