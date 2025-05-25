@@ -46,13 +46,14 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 ## 6. Implementazione
 
 ### Struttura 
+```
 /src
   /templates         # Cartella che contiene le pagine HTML
   /static            # Contiene i file statici (CSS, immagini)
     /css             # Fogli di stile CSS
     /img             # Immagini del sito
   server.py          # File principale del server (es. Flask)
-
+```
 Per vedere meglio la struttura basta entrare nella cartella src all' interno del repository
 ### Funzionalità chiave
 ```js
