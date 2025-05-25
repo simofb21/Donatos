@@ -2,19 +2,19 @@
 **Documentazione tecnica**
 
 ## 1. Introduzione  
-Il progetto **Donatos** è un social network che nasce con l'obiettivo di condividere dei momenti con delle frasi.
+Il progetto **Donatos** è un sito che nasce con l'obiettivo di condividere dei momenti, ricordi, e qualsiasi altra informazione si voglia, attraverso delle frasi , che è possibile salvare sul nostro sito.
 
 ## 2. Team di sviluppo  
-Il progetto è stato sviluppato da un team di tre studenti del corso di **4IC Informatica**:
+Il progetto è stato sviluppato da un team di quattro studenti del corso di **4IC Informatica**:
 
 | Nome                     | Competenze e attività principali   |
 |--------------------------|------------------------------------|
-| D'Elia, Fusar Bassini    | Backend                            |
-| Donato, Cornetti         | Frontend, css                      |
-| Donato, Cornetti         | documentazione                     |
+|Cornetti Andrea| Sviluppo logo, pagina css per l' homePage, presentazione,documento di progettto|
+|Donato Riccardo|Pagina css per il login, presentazione,documento di progetto, decisione sulla grafica per tutto il sito|
+|Fusar Bassini Simone| Comunicazione con il server lato front-end e cooperazione nello sviluppo del server|
+|D'Elia Raffaele| Sviluppo del server lato front-end e cooperazione nello sviluppo del front-end|
 
-> 💡 Se usato Git: [Link al repository GitHub](https://github.com/simofb21/Donatos.git)
-
+* Il progetto si trova su Github al seguente link https://github.com/simofb21/Donatos 
 ## 3. Requisiti
 
 ### 3.1 Requisiti Funzionali 
