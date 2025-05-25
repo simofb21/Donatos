@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="../static/css/styleHome.css"> 
 </head>
 <body>
-    <script>
+    <script> // Controlla se l'utente è loggato altrimenti reindirizza alla home
     if (!localStorage.getItem('donatos_username')) {
         window.location.href = '/';
     }
-    <div class="logout-area">
-    <button id="logout-btn" type="button">Logout</button>
-    </div>
     </script>
-    <img src="../static/img/logo.jpg" alt="Logo" class="logo">
+    <a href = "/homePage" ><img src="../static/img/logo.jpg" alt="Logo" class="logo" > </a>
     <div class="username">
         <p id="welcome-user">Benvenuto <span id="utente-nome"></span></p>
+    </div>
+      <div class="logout-area">
+    <button id="logout-btn" type="buttaon">Logout</button>
     </div>
     <div id="ricercaUtente" style="text-align:center; margin-bottom:2rem;">
         <input type="text" id="searchUser" placeholder="Cerca per username..." style="padding:0.5rem; border-radius:8px; border:none; width:200px;">
@@ -36,24 +36,26 @@
 
     let tutteLeFrasi = [];
 
-    async function leggiFrasi() {
+    async function leggiFrasi() { // Funzione per caricare le frasi
         try {
             const response = await fetch('/frasi');
             if (!response.ok) throw new Error('Errore nella richiesta');
             tutteLeFrasi = await response.json();
+            // Ordina casualmente le frasi
+            tutteLeFrasi.sort(() => Math.random() - 0.5);            
             mostraFrasi(tutteLeFrasi);
         } catch (error) {
             console.error('Errore nel caricamento delle frasi:', error);
         }
     }
 
-    function mostraFrasi(frasi) {
+    function mostraFrasi(frasi) { //mostra le frasi, se non ci sono mostra nessuna frase trovata
         const frasiDiv = document.getElementById('frasi');
         frasiDiv.innerHTML = '';
         if(frasi.length === 0) {
             frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
         } else {
-            for(const frase of frasi){
+            for(const frase of frasi){ //c'è un div con tutte le frasi, per ogni frase c'è un div con la frase, autore e data
                 const fraseBox = document.createElement('div');
                 fraseBox.className = 'frase-box';
 
@@ -67,19 +69,20 @@
                 const pData = document.createElement('p');
                 pData.className = 'frase-info';
                 pData.textContent = 'Data: ' + frase.dataora;
-
+               //AGGIUNGO I ELEMENTI AL DIV DI UNA SINGOLA FRASE
                 fraseBox.appendChild(pFrase);
                 fraseBox.appendChild(pAutore);
                 fraseBox.appendChild(pData);
+                 //aggiungo il div di una singola frase al div di tutte le frasi
                 frasiDiv.appendChild(fraseBox);
             }
         }
     }
-    document.getElementById('logout-btn').onclick = function() {
-    localStorage.removeItem('donatos_username');
-    window.location.href = '/';
+    document.getElementById('logout-btn').onclick = function() { //se clicca il bottone di logout, rimuove l'username dal localStorage e reindirizza alla home
+        localStorage.removeItem('donatos_username');
+        window.location.href = '/';
     };
-    document.getElementById('searchBtn').onclick = function() {
+    document.getElementById('searchBtn').onclick = function() {  // se clicca il bottone di ricerca, prende il valore dell'input e filtra le frasi in base all'username
         const username = document.getElementById('searchUser').value.trim();
         if(username) {
             const filtrate = tutteLeFrasi.filter(f => f.username.toLowerCase() === username.toLowerCase());
@@ -89,13 +92,13 @@
         }
     };
 
-    document.getElementById('resetBtn').onclick = function() {
+    document.getElementById('resetBtn').onclick = function() { // se clicca il bottone di reset,ovvero 'Tutti', rimuove il valore di ricerca e mostra tutte le frasi
         document.getElementById('searchUser').value = '';
         mostraFrasi(tutteLeFrasi);
     };
 
-    leggiFrasi();
-    mostraFrasi(tutteLeFrasi);
+    leggiFrasi(); //fisso leggo le frasi
+    mostraFrasi(tutteLeFrasi); //e le mostro 
     </script>
 </body>
 </html>

@@ -9,18 +9,17 @@
 </head>
 <body>
     
-    <script>
+    <script> // Controlla se l'utente è loggato altrimenti reindirizza alla home
     if (!localStorage.getItem('donatos_username')) {
         window.location.href = '/';
     }
-    <div class="logout-area">
-    <button id="logout-btn" type="button">Logout</button>
-    </div>
     </script>
     <img src="../static/img/logo.jpg" alt="Logo" class="logo">
     <div class="username">
         <p id="welcome-user"></p>
-
+    </div>
+    <div class="logout-area">
+    <button id="logout-btn" type="button">Logout</button>
     </div>
     <div id="aggiungiFrase">
         <button id="aggiungiFraseBtn" type="button">Aggiungi Frase</button>
@@ -34,16 +33,16 @@
     <script>
     // ottengo username loggato 
     const username = localStorage.getItem('donatos_username');
-    document.getElementById('welcome-user').textContent = "Benvenuto " + username;
+    document.getElementById('welcome-user').textContent = "Benvenuto " + username; //setto il nome utente nella pagina
     let frasiUtente = [];
     // Logout
-    document.getElementById('logout-btn').onclick = function() {
+    document.getElementById('logout-btn').onclick = function() { // rimuovo l'username dal localStorage e reindirizzo alla home
         localStorage.removeItem('donatos_username');
         window.location.href = '/';
     };
-    async function filtraFrasi() {
+    async function filtraFrasi() { //filtro le frasi, ovvero mostro  solo quelle dell' utente
     try {
-        const res = await fetch('/frasi');
+        const res = await fetch('/frasi'); 
         if (!res.ok) throw new Error('File non trovato o errore di rete');
         const frasi = await res.json();
         frasiUtente = []; // svuota l'array prima di riempirlo
@@ -57,33 +56,28 @@
         console.error('Errore nell\'apertura o lettura del file:', error);
     }
 }
-    async function caricaFrasi(){
+    async function caricaFrasi(){ // carica le frasi dell'utente
         await filtraFrasi();
         const frasiDiv = document.getElementById('frasi');
         frasiDiv.innerHTML = '';
-        if (frasiUtente.length === 0) {
+        if (frasiUtente.length === 0) { // se non ci sono frasi dell'utente mostra nessuna frase trovata
             frasiDiv.innerHTML = '<p style="text-align:center;">Nessuna frase trovata.</p>';
-        } else {
+        } else { // altrimenti c'è  il div frase box per ogni frase all' interno del div con tutte le frasi
             for(const frase of frasiUtente){
                 const fraseBox = document.createElement('div');
                 fraseBox.className = 'frase-box';
-
-                // Contenitore testo e bottone
-                const contenuto = document.createElement('div');
+                const contenuto = document.createElement('div'); //crea anche un div per contenuto e  stile
                 contenuto.className = 'frase-contenuto';
-
                 const pFrase = document.createElement('p');
-                pFrase.textContent = frase.frase;
-
-                // Bottone cancella accanto alla frase
-                const btnCancella = document.createElement('button');
+                pFrase.textContent = frase.frase; // testo della frase
+                const btnCancella = document.createElement('button'); // bottone per cancellare la frase
                 btnCancella.className = 'cancella-btn';
                 btnCancella.title = 'Cancella frase';
-                btnCancella.innerHTML = '&times;';
+                btnCancella.innerHTML = '&times;'; //mostra la x
                 btnCancella.onclick = async function() {
-                    if(confirm('Vuoi davvero cancellare questa frase?')) {
+                    if(confirm('Vuoi davvero cancellare questa frase?')) { //se conferma di voler cancellare fa post per cancellare la frase
                         await fetch('/cancella_frase', {
-                            method: 'POST',
+                            method: 'POST', 
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 username: frase.username,
@@ -91,24 +85,22 @@
                                 frase: frase.frase
                             })
                         });
-                        caricaFrasi();
+                        caricaFrasi(); // e ricarico con quelle nuove
                     }
                 };
-
-                contenuto.appendChild(pFrase);
-                contenuto.appendChild(btnCancella); // bottone accanto alla frase
-                fraseBox.appendChild(contenuto);
+                contenuto.appendChild(pFrase); // aggiunge il testo della frase a contenuto
+                contenuto.appendChild(btnCancella); // bottone accanto alla frase , aggiunto a contenuto
+                fraseBox.appendChild(contenuto);//contenuto aggiunto a frase box
 
                 const pData = document.createElement('p');
-                pData.textContent = 'Data: ' + frase.dataora;
+                pData.textContent = 'Data: ' + frase.dataora; //data aggiunta a frase box
                 fraseBox.appendChild(pData);
-
-                frasiDiv.appendChild(fraseBox);
+                frasiDiv.appendChild(fraseBox); //aggiunge il div di una singola frase al div di tutte le frasi
             }
         }
     }
 
-    // Aggiungi frase
+    // Aggiungi frase : fa post con frasse e username
     document.getElementById('aggiungiFraseBtn').onclick = async function() {
         const testo = prompt('Inserisci la nuova frase:');
         if(testo && testo.trim().length > 0) {
