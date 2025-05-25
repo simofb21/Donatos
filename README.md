@@ -18,13 +18,18 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 ## 3. Requisiti
 
 ### 3.1 Requisiti Funzionali 
-- L’utente può registrarsi e accedere al sistema.
+- server accessibile da altri utenti(solo della nostra stessa rete)
+- Gli utenti possono registrarasi e accedere al sistema
+- Gli utenti possono fare il logout
 - Gli utenti possono scrivere delle frasi
+- Gli utenti possono cancellare delle frasi
 - Gli utenti possono vedere frasi altrui
-- Gli utenti possono fare il logout 
 
 ### 3.2 Requisiti Non Funzionali
 - L'interfaccia utente è intuitiva e facile da usare.
+- Stile adattato per funzionare sia su computer ma anche su mobile
+- (Teoricamente sarebbe funzionale, ma per le nostre competenze iniziali no) **crittografia** per non salvare le password in chiaro sul file
+- possibilità di cancellare utenti/frasi da amministratore(lo può fare solo chi accede al server, editando i 2 file)
 
 ## 4. Analisi del Sistema
 
@@ -34,28 +39,59 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 ## 5. Architettura del Software
 
 ### Tecnologie utilizzate
-- **Frontend**:   html,css,js
-- **Backend**: python (flask)
+- **Frontend**:   html,css, **js**  con Ajax per effettuare le richieste al server
+- **Backend**: Python(flask)
+- **Salvataggio delle informazioni** : File Json
 
 ## 6. Implementazione
 
-### Struttura delle cartelle
-```
+### Struttura 
 /src
-  /template
-  /static
-    /css
-    /img
-```
+  /templates         # Cartella che contiene le pagine HTML
+  /static            # Contiene i file statici (CSS, immagini)
+    /css             # Fogli di stile CSS
+    /img             # Immagini del sito
+  server.py          # File principale del server (es. Flask)
 
+Per vedere meglio la struttura basta entrare nella cartella src all' interno del repository
 ### Funzionalità chiave
 ```js
 loginUser(email, password)
 createReport(data)
 ```
+## 7. Installazione e configurazione
+È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
+### Come eseguire il server Flask su Raspberry Pi o su un computer normale
 
-## 7. Manuale Utente
+È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
 
+---
+
+### ✅ Esecuzione su Raspberry Pi
+
+Se utilizzi un Raspberry Pi con Python già installato, l’esecuzione è molto semplice.
+
+Apri il terminale ed esegui i seguenti comandi:
+
+```bash
+git clone https://github.com/simofb21/Donatos.git    # Clona la repository
+cd Donatos/src                                       # Vai nella cartella del progetto
+python3 server.py                                    # Avvia il server
+```
+Se compare un errore vuol dire che non hai flask installato, quindi :
+```bash
+pip install flask #adesso hai scaricato la librerai
+python3 server.py #afesso puoi eseguire al codice
+```
+Ora i dispositivi sulla tua rete possono accedere al sito visitando IP_TUO_IP_RASPBERRY:5000
+
+Parte per eseguire su windows/linux  , ambiente virtuale (fa bomber)
+
+**NB: noi diamo per scontato che i dispositivi abbiano già installato python, su linux, e quindi sul raspberry è già installato, ma da altri OS , andrebbe scaricato**
+
+## 8. Manuale Utente
+Innanzitutto bisogna connettersi all' indirizzo IP del server, questo rimanderà alla pagina di Login
+Quindi andare su un browser e digitare IP:50000  # questo perchè flask usa la porta 50000
 ### Registrazione  
 Se non sei registrato clicca su "Registrati", compilare i campi username e password
 
@@ -67,17 +103,19 @@ Se ti sei registrato inserisci le tue credenziali
 ![image](https://github.com/user-attachments/assets/e1792ff7-46a8-4fd9-b727-022274c3cf0b)
 
 ## 8. Manutenzione e Sviluppo Futuro
-
-- **Bug noti**: problema di rendering su Safari  
-- **Funzionalità previste**: esportazione in PDF, notifiche push
+- possibilità di rendere il servizio accessibile a tutti e non solo da pc sulla nostra stessa rete
+- possibilità di esportare tutte le frasi
+- possibilità di cancellare un utente esistente
+- funzione per cambiare la password
+- funzione per password dimenticata
+- migliorare la pagina esplora : non mostrare solo randomicamente tutte le frasi di tutti gli utenti, ma mostrare per esempio le frasi più opportune per determinati utenti, quelle più simili, quelle di  persone che potresti conoscere ecc
 
 ## 9. Conclusioni 
 Il progetto ha raggiunto gli obiettivi principali. Le sfide maggiori sono state [...]. È stato utile per migliorare le competenze in [...].
 
 ## 10. Riferimenti e Bibliografia
-
-- [Documentazione ufficiale di React](https://reactjs.org)
-- *Clean Code* di Robert C. Martin
+ . https://gitlab.com/4i3785803/Telecomunicazioni/-/blob/master/laboratorio/LAB1_FLASK.md?ref_type=heads TUTORIAL DEL PROF DI TELECOMUNICAZIONI PER REALIZZARE SERVER CON FLASK, DOPO DI CHE ABBIAMO APPROFONDITO NOI INDIVIDUALMENTE
+ . mentre per fare le fetch da 
 
 ## 11. Appendici
 
