@@ -56,7 +56,7 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 ```
 Per vedere meglio la struttura basta entrare nella cartella src all' interno del repository
 ### Funzionalità chiave
-Lato server : 
+Lato server :  python
 ```python
 @app.route('/') #consetnte di accedere alla index, procedimento analogo per tutte le altre pagine
 def home():
@@ -73,6 +73,14 @@ def login():# rotta per il login che restiituisce come è andato
 def aggiungi_frase(): #riceve la frase via post e la aggiunge al file con le frasi
 @app.route('/cancella_frase', methods=['POST'])#rotta per cancellare le frasi , con richiesta post, se va bene , le rimuove dal file 
 def cancella_frase(): 
+```
+JS per dialogare con server : 
+```javascript
+
+async function caricaFrasi(){ // fa richiesta per ottenere le frasi , e le scrive sulla pagina 
+Questa è diciamo la funzione principale , ovvero quella che prende le frasi, e le scrive nell' html che avevamo preparato.
+Vi sono però ovviamente anche altre funzioni importanti , per esempio per completare il login quando clicca , perr cambiare le pagine ecc...
+
 ```
 
 
