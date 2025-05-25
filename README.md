@@ -56,10 +56,26 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 ```
 Per vedere meglio la struttura basta entrare nella cartella src all' interno del repository
 ### Funzionalità chiave
-```js
-loginUser(email, password)
-createReport(data)
+Lato server : 
+```python
+@app.route('/') #consetnte di accedere alla index, procedimento analogo per tutte le altre pagine
+def home():
+    return render_template('index.html')
+@app.route('/frasi', methods=['GET']) #rotta che restituisce le frasi
+def frasi():
+    return jsonify(frasi), 200 #retorna le frasi in formato JSON
+@app.route('/registrati', methods=['POST'])#rotta che gestisce registrazione  , aggiunge utente al file utenti
+def registrati():
+    return jsonify({'success': True, 'message': 'Registrazione avvenuta'}), 201
+@app.route('/login', methods=['POST'])
+def login():# rotta per il login che restiituisce come è andato
+@app.route('/aggiungi_frase', methods=['POST'])
+def aggiungi_frase(): #riceve la frase via post e la aggiunge al file con le frasi
+@app.route('/cancella_frase', methods=['POST'])#rotta per cancellare le frasi , con richiesta post, se va bene , le rimuove dal file 
+def cancella_frase(): 
 ```
+
+
 ## 7. Installazione e configurazione
 È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
 ### Come eseguire il server Flask su Raspberry Pi o su un computer normale
