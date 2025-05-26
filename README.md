@@ -3,6 +3,7 @@
 
 ## 1. Introduzione  
 Il progetto **Donatos** è un sito che nasce con l'obiettivo di condividere dei momenti, ricordi, e qualsiasi altra informazione si voglia, attraverso delle frasi , che è possibile salvare sul nostro sito.
+Il nome **Donatos** è ispirato dal cognome di uno dei membri del nostro gruppo, Riccardo Donato, e suona molto bene per un social network di successo.
 
 ## 2. Team di sviluppo  
 Il progetto è stato sviluppato da un team di quattro studenti del corso di **4IC Informatica**:
@@ -124,13 +125,12 @@ Se ti sei registrato inserisci le tue credenziali
 ### Home Page
 Una volta loggato ci accedi a /homePage
 Qua puoi vedere tutte le tue frasi 
-![image](https://github.com/user-attachments/assets/fb7089e2-b19d-49df-ab03-856380f4b8c8) 
-Ne puoi aggiungere una , cliccando sulla X rossa puoi cancellarla
-![image](https://github.com/user-attachments/assets/85f63c6c-573f-42f5-8d39-9b66d50ea431)
+![image](https://github.com/user-attachments/assets/0c1d9e2d-71d5-4e27-b0db-7a61999c2151)
+Ne puoi aggiungere una oppure, cliccando sulla X rossa puoi cancellarla
 ### Esplora page
 Una volta loggato ci accedi a /esplora
 Su questa pagina puoi vedere le pagine di tutti gli utenti, cercare le frasi specifiche per utente
-![image](https://github.com/user-attachments/assets/eb34d00c-f7ee-4d05-9c6e-cb19ac27bb51)
+![image](https://github.com/user-attachments/assets/39d0342a-bdaa-4852-a082-0c7db0ae8ad3)
 
 ## 8. Manutenzione e Sviluppo Futuro
 - possibilità di rendere il servizio accessibile a tutti e non solo da pc sulla nostra stessa rete
@@ -142,9 +142,7 @@ Su questa pagina puoi vedere le pagine di tutti gli utenti, cercare le frasi spe
 
 ## 9. Conclusioni 
 Il progetto Donatos ha raggiunto gli obiettivi principali: creare una piattaforma semplice e intuitiva per scrivere, salvare e condividere frasi personali. Durante lo sviluppo, ci siamo confrontati con diverse sfide, come la gestione dei dati, l'autenticazione degli utenti e l'organizzazione del codice tra frontend e backend.
-
-Questo ci ha permesso di approfondire l'utilizzo di Flask per il server, migliorare le nostre competenze con JavaScript (AJAX) per la comunicazione asincrona, e curare l’aspetto grafico del sito con HTML e CSS. Abbiamo imparato a collaborare in gruppo, dividendo i compiti e coordinando le decisioni di design e sviluppo.
-
+Questo ci ha permesso di approfondire l'utilizzo di Flask per il server, migliorare le nostre competenze con JavaScript , e curare l’aspetto grafico del sito con HTML e CSS. Abbiamo imparato a collaborare in gruppo, dividendo i compiti e coordinando le decisioni di design e sviluppo.
 Siamo consapevoli che ci sono ancora molte funzionalità da implementare e miglioramenti possibili, ma siamo soddisfatti di quanto realizzato. Donatos rappresenta per noi non solo un sito funzionante, ma anche un’esperienza concreta di progettazione e sviluppo software, che ci ha avvicinati ancora di più al mondo della programmazione web.
 ## 10. Riferimenti e Bibliografia
  . https://gitlab.com/4i3785803/Telecomunicazioni/-/blob/master/laboratorio/LAB1_FLASK.md?ref_type=heads TUTORIAL DEL PROF DI TELECOMUNICAZIONI PER REALIZZARE SERVER CON FLASK, DOPO DI CHE ABBIAMO APPROFONDITO NOI INDIVIDUALMENTE
