@@ -91,11 +91,7 @@ Vi sono però ovviamente anche altre funzioni importanti , per esempio per compl
 È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
 
 ---
-
-### ✅ Esecuzione su Raspberry Pi
-
-Se utilizzi un Raspberry Pi con Python già installato, l’esecuzione è molto semplice.
-
+### ✅ Di seguito i comandi per farlo
 Apri il terminale ed esegui i seguenti comandi:
 
 ```bash
@@ -105,14 +101,12 @@ python3 server.py                                    # Avvia il server
 ```
 Se compare un errore vuol dire che non hai flask installato, quindi :
 ```bash
-pip install flask #adesso hai scaricato la librerai
-python3 server.py #afesso puoi eseguire al codice
+pip install flask #adesso hai scaricato la libreria
+python3 server.py #adesso puoi eseguire il codice
 ```
 Ora i dispositivi sulla tua rete possono accedere al sito visitando IP_TUO_IP_RASPBERRY:5000
 
-Parte per eseguire su windows/linux  , ambiente virtuale (fa bomber)
-
-**NB: noi diamo per scontato che i dispositivi abbiano già installato python, su linux, e quindi sul raspberry è già installato, ma da altri OS , andrebbe scaricato**
+**NB: noi diamo per scontato che i dispositivi abbiano già installato python, su linux, e quindi sul raspberry è già installato, ma da altri OS , andrebbe scaricato, all'inizio di tutto**
 
 ## 8. Manuale Utente
 Innanzitutto bisogna connettersi all' indirizzo IP del server, questo rimanderà alla pagina di Login
@@ -127,6 +121,17 @@ Se ti sei registrato inserisci le tue credenziali
 
 ![image](https://github.com/user-attachments/assets/e1792ff7-46a8-4fd9-b727-022274c3cf0b)
 
+### Home Page
+Una volta loggato ci accedi a /homePage
+Qua puoi vedere tutte le tue frasi 
+![image](https://github.com/user-attachments/assets/fb7089e2-b19d-49df-ab03-856380f4b8c8) 
+Ne puoi aggiungere una , cliccando sulla X rossa puoi cancellarla
+![image](https://github.com/user-attachments/assets/85f63c6c-573f-42f5-8d39-9b66d50ea431)
+### Esplora page
+Una volta loggato ci accedi a /esplora
+Su questa pagina puoi vedere le pagine di tutti gli utenti, cercare le frasi specifiche per utente
+![image](https://github.com/user-attachments/assets/eb34d00c-f7ee-4d05-9c6e-cb19ac27bb51)
+
 ## 8. Manutenzione e Sviluppo Futuro
 - possibilità di rendere il servizio accessibile a tutti e non solo da pc sulla nostra stessa rete
 - possibilità di esportare tutte le frasi
@@ -136,14 +141,14 @@ Se ti sei registrato inserisci le tue credenziali
 - migliorare la pagina esplora : non mostrare solo randomicamente tutte le frasi di tutti gli utenti, ma mostrare per esempio le frasi più opportune per determinati utenti, quelle più simili, quelle di  persone che potresti conoscere ecc
 
 ## 9. Conclusioni 
-Il progetto ha raggiunto gli obiettivi principali. Le sfide maggiori sono state [...]. È stato utile per migliorare le competenze in [...].
+Il progetto Donatos ha raggiunto gli obiettivi principali: creare una piattaforma semplice e intuitiva per scrivere, salvare e condividere frasi personali. Durante lo sviluppo, ci siamo confrontati con diverse sfide, come la gestione dei dati, l'autenticazione degli utenti e l'organizzazione del codice tra frontend e backend.
 
+Questo ci ha permesso di approfondire l'utilizzo di Flask per il server, migliorare le nostre competenze con JavaScript (AJAX) per la comunicazione asincrona, e curare l’aspetto grafico del sito con HTML e CSS. Abbiamo imparato a collaborare in gruppo, dividendo i compiti e coordinando le decisioni di design e sviluppo.
+
+Siamo consapevoli che ci sono ancora molte funzionalità da implementare e miglioramenti possibili, ma siamo soddisfatti di quanto realizzato. Donatos rappresenta per noi non solo un sito funzionante, ma anche un’esperienza concreta di progettazione e sviluppo software, che ci ha avvicinati ancora di più al mondo della programmazione web.
 ## 10. Riferimenti e Bibliografia
  . https://gitlab.com/4i3785803/Telecomunicazioni/-/blob/master/laboratorio/LAB1_FLASK.md?ref_type=heads TUTORIAL DEL PROF DI TELECOMUNICAZIONI PER REALIZZARE SERVER CON FLASK, DOPO DI CHE ABBIAMO APPROFONDITO NOI INDIVIDUALMENTE
- . mentre per fare le fetch da 
+ . mentre per fare le fetch da js abbiamo usato ajax 
 
 ## 11. Appendici
-
-- Codice sorgente: vedi cartella `/src`
-- Glossario dei termini tecnici
-- Screenshot dell’interfaccia in ordine cronologico
+- Per vedere il sorgente clicca sulla cartella src. Se ci sono dubbi invitiamo a contattarci.
