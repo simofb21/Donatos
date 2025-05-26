@@ -86,7 +86,6 @@ Vi sono però ovviamente anche altre funzioni importanti , per esempio per compl
 
 
 ## 7. Installazione e configurazione
-È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
 ### Come eseguire il server Flask su Raspberry Pi o su un computer normale
 
 È possibile eseguire il server su un Raspberry Pi oppure su un computer normale (Windows, macOS, Linux).
