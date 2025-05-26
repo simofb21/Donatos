@@ -33,10 +33,51 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 - possibilità di cancellare utenti/frasi da amministratore(lo può fare solo chi accede al server, editando i 2 file)
 
 ## 4. Analisi del Sistema
+![image](https://github.com/user-attachments/assets/97390342-e465-404e-b12c-cfbf10189654)
 
-### Descrizione dei moduli principali
-- **Modulo autenticazione**
-  
+
+# Casi d'Uso - Sistema Donatos
+
+## Attori Coinvolti
+- **User**: Utente generico che può registrarsi, accedere e gestire frasi.
+- **Admin**: Amministratore che può intervenire direttamente sui file.
+---
+
+## UC1 - Registrarsi
+- **Attore**: User  
+- **Descrizione**: L’utente può registrarsi al sistema inserendo i propri dati.  
+- **Precondizione**: Nessuna  
+- **Postcondizione**: I dati vengono salvati per consentire futuri login.
+---
+
+## UC2 - Effettuare login
+- **Attore**: User  
+- **Descrizione**: L’utente inserisce credenziali per accedere al sistema.  
+- **Precondizione**: L’utente deve essere già registrato.  
+- **Postcondizione**: Se le credenziali sono corrette, accede al sistema.
+---
+## UC3 - Vedere tutte le frasi
+- **Attore**: User  
+- **Descrizione**: Il sistema mostra tutte le frasi salvate.  
+- **Precondizione**: L’utente deve essere loggato.  
+- **Postcondizione**: Le frasi vengono mostrate all’utente.
+---
+## UC4 - Aggiungere/Cancellare frase
+- **Attore**: User  
+- **Descrizione**: L’utente può aggiungere nuove frasi o rimuovere quelle esistenti.  
+- **Precondizione**: L’utente deve essere loggato.  
+- **Postcondizione**: Le frasi vengono aggiornate nel sistema.
+---
+## UC5 - Cancellare frasi/utenti direttamente dal file
+- **Attore**: Admin  
+- **Descrizione**: L’amministratore accede direttamente al file e gestisce frasi o utenti.  
+- **Precondizione**: Bisogna essere sulla macchina che sta eseguendo il file server.py 
+- **Postcondizione**: Il file viene aggiornato
+---
+
+## Note
+- Le dipendenze tra i casi d’uso (es. "per vedere le frasi bisogna prima fare login") sono espresse tramite **precondizioni**, non tramite relazioni `<<include>>` o `<<ext
+
 ## 5. Architettura del Software
 
 ### Tecnologie utilizzate
