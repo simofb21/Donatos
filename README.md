@@ -197,6 +197,8 @@ Siamo consapevoli che ci sono ancora molte funzionalità da implementare e migli
 ## 11. Riferimenti e Bibliografia
  . https://gitlab.com/4i3785803/Telecomunicazioni/-/blob/master/laboratorio/LAB1_FLASK.md?ref_type=heads TUTORIAL DEL PROF DI TELECOMUNICAZIONI PER REALIZZARE SERVER CON FLASK, DOPO DI CHE ABBIAMO APPROFONDITO NOI INDIVIDUALMENTE
  . mentre per fare le fetch da js abbiamo usato ajax 
+ . Il codice utilizza la libreria werkzeug.security per la crittografia (hashing) delle password , che è inclusa nel framework di flask
+
 
 ## 12. Appendici
 - Per vedere il sorgente clicca sulla cartella src. Se ci sono dubbi invitiamo a contattarci.
