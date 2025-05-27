@@ -1,5 +1,19 @@
 # Donatos  
 **Documentazione tecnica**
+## Indice dei contentui
+- [1. Introduzione](#1-introduzione)
+- [2. Team di sviluppo](#2-team-di-sviluppo)
+- [3. Requisiti](#3-requisiti)
+- [4. Analisi del Sistema](#4-analisi-del-sistema)
+- [5. Architettura del Software](#5-architettura-del-software)
+- [6. Implementazione](#6-implementazione)
+- [7. Installazione e configurazione](#7-installazione-e-configurazione)
+- [8. Manuale Utente](#8-manuale-utente)
+- [9. Sviluppi Futuri](#9-sviluppi-futuri)
+- [10. Conclusioni](#10-conclusioni)
+- [11. Riferimenti e bibliografia](#11-Riferimenti-e-Bibliografia)
+- [12. Appendici](#12-appendici)  
+
 
 ## 1. Introduzione  
 Il progetto **Donatos** è un sito che nasce con l'obiettivo di condividere dei momenti, ricordi, e qualsiasi altra informazione si voglia, attraverso delle frasi , che è possibile salvare sul nostro sito.
@@ -10,7 +24,7 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 
 | Nome                     | Competenze e attività principali   |
 |--------------------------|------------------------------------|
-|Cornetti Andrea| Sviluppo logo, pagina css per l' homePage, presentazione,documento di progettto|
+|Cornetti Andrea| Sviluppo logo, pagina css per l' homePage, presentazione,documento di progetto|
 |Donato Riccardo|Pagina css per il login, presentazione,documento di progetto, decisione sulla grafica per tutto il sito|
 |Fusar Bassini Simone| Comunicazione con il server lato front-end e cooperazione nello sviluppo del server|
 |D'Elia Raffaele| Sviluppo del server lato front-end e cooperazione nello sviluppo del front-end|
@@ -20,7 +34,7 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 
 ### 3.1 Requisiti Funzionali 
 - server accessibile da altri utenti(solo della nostra stessa rete)
-- Gli utenti possono registrarasi e accedere al sistema
+- Gli utenti possono registrarsi e accedere al sistema
 - Gli utenti possono fare il logout
 - Gli utenti possono scrivere delle frasi
 - Gli utenti possono cancellare delle frasi
@@ -168,21 +182,21 @@ Una volta loggato ci accedi a /esplora
 Su questa pagina puoi vedere le pagine di tutti gli utenti, cercare le frasi specifiche per utente
 ![image](https://github.com/user-attachments/assets/39d0342a-bdaa-4852-a082-0c7db0ae8ad3)
 
-## 8. Manutenzione e Sviluppo Futuro
-- possibilità di rendere il servizio accessibile a tutti e non solo da pc sulla nostra stessa rete
-- possibilità di esportare tutte le frasi
-- possibilità di cancellare un utente esistente
-- funzione per cambiare la password
-- funzione per password dimenticata
-- migliorare la pagina esplora : non mostrare solo randomicamente tutte le frasi di tutti gli utenti, ma mostrare per esempio le frasi più opportune per determinati utenti, quelle più simili, quelle di  persone che potresti conoscere ecc
+## 9.Sviluppi futuri
+- ☐ Rendere il sito accessibile da internet (non solo da rete locale)
+- ☐ Esportazione frasi
+- ☐ Cancellazione utenti via interfaccia
+- ☐ Funzione "cambia password"
+- ☐ Recupero password dimenticata
+- ☐ Migliorare la pagina "Esplora" con suggerimenti personalizzati
 
-## 9. Conclusioni 
+## 10. Conclusioni 
 Il progetto Donatos ha raggiunto gli obiettivi principali: creare una piattaforma semplice e intuitiva per scrivere, salvare e condividere frasi personali. Durante lo sviluppo, ci siamo confrontati con diverse sfide, come la gestione dei dati, l'autenticazione degli utenti e l'organizzazione del codice tra frontend e backend.
 Questo ci ha permesso di approfondire l'utilizzo di Flask per il server, migliorare le nostre competenze con JavaScript , e curare l’aspetto grafico del sito con HTML e CSS. Abbiamo imparato a collaborare in gruppo, dividendo i compiti e coordinando le decisioni di design e sviluppo.
 Siamo consapevoli che ci sono ancora molte funzionalità da implementare e miglioramenti possibili, ma siamo soddisfatti di quanto realizzato. Donatos rappresenta per noi non solo un sito funzionante, ma anche un’esperienza concreta di progettazione e sviluppo software, che ci ha avvicinati ancora di più al mondo della programmazione web.
-## 10. Riferimenti e Bibliografia
+## 11. Riferimenti e Bibliografia
  . https://gitlab.com/4i3785803/Telecomunicazioni/-/blob/master/laboratorio/LAB1_FLASK.md?ref_type=heads TUTORIAL DEL PROF DI TELECOMUNICAZIONI PER REALIZZARE SERVER CON FLASK, DOPO DI CHE ABBIAMO APPROFONDITO NOI INDIVIDUALMENTE
  . mentre per fare le fetch da js abbiamo usato ajax 
 
-## 11. Appendici
+## 12. Appendici
 - Per vedere il sorgente clicca sulla cartella src. Se ci sono dubbi invitiamo a contattarci.
