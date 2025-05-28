@@ -47,7 +47,7 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 - possibilità di cancellare utenti/frasi da amministratore(lo può fare solo chi accede al server, editando i 2 file)
 
 ## 4. Analisi del Sistema
-![image](https://github.com/user-attachments/assets/7d156113-911e-406e-84bd-d4ae042c23ba)
+![image](https://github.com/user-attachments/assets/129534a3-86fc-4e70-8404-7ae45b99e3cd)
 
 
 ## Casi d'Uso 
