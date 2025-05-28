@@ -16,16 +16,16 @@
 
 
 ## 1. Introduzione  
-Il progetto **Donatos** è un social network che nasce con l'obiettivo di condividere dei momenti con delle frasi.
-
+Il progetto **Donatos** è un sito che nasce con l'obiettivo di condividere dei momenti, ricordi, e qualsiasi altra informazione si voglia, attraverso delle frasi , che è possibile salvare sul nostro sito. Il nome Donatos è ispirato dal cognome di uno dei membri del nostro gruppo, Riccardo Donato, e suona molto bene per un social network di successo.
 ## 2. Team di sviluppo  
 Il progetto è stato sviluppato da un team di quattro studenti del corso di **4IC Informatica**:
 
 | Nome                     | Competenze e attività principali   |
 |--------------------------|------------------------------------|
-| D'Elia, Fusar Bassini    | Backend                            |
-| Donato, Cornetti         | Frontend, css                      |
-| Donato, Cornetti         | documentazione                     |
+| Cornetti Andrea   | Sviluppo logo, pagina css per l' homePage, presentazione,documento di progettto                            |
+| Donato Riccardo       | Pagina css per il login, presentazione,documento di progetto, decisione sulla grafica per tutto il sito                  |
+| Fusar Bassini Simone        | Comunicazione con il server lato front-end e cooperazione nello sviluppo del server|
+|D'Elia Raffaele|Sviluppo del server lato front-end e cooperazione nello sviluppo del front-end|
 
 > 💡 Se usato Git: [Link al repository GitHub](https://github.com/simofb21/Donatos.git)
 
@@ -46,7 +46,7 @@ Il progetto è stato sviluppato da un team di quattro studenti del corso di **4I
 - possibilità di cancellare utenti/frasi da amministratore(lo può fare solo chi accede al server, editando i 2 file)
 
 ## 4. Analisi del Sistema
-![image](https://github.com/user-attachments/assets/129534a3-86fc-4e70-8404-7ae45b99e3cd)
+![image](https://github.com/user-attachments/assets/69c3e0e4-2999-430e-971d-e8c754dc5a47)
 
 
 ## Casi d'Uso 
